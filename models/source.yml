@@ -1,0 +1,54 @@
+version: 2
+sources:
+  - name: ZUES_PROJECT
+    database: DBT_DATABASE
+    schema: ZUES_PROJECT
+    tables:
+     - name: aiken_ptfe_901_plc
+       config: 
+        freshness: 
+          warn_after: 
+            count: 1
+            period: day
+          error_after: 
+            count: 1
+            period: day
+          
+          
+     - name: bnj_ptfe_701_plc
+       config: 
+        freshness: 
+          warn_after: 
+            count: 1
+            period: day
+          error_after: 
+            count: 1
+            period: day
+          
+          
+     - name: csc_ptfe_601_plc
+       config:
+        freshness: 
+          warn_after: 
+            count: 1
+            period: day
+          error_after: 
+            count: 1
+            period: day
+          
+          
+     - name: ire_ptfe_701_plc
+       config:
+        freshness: 
+          warn_after: 
+            count: 1
+            period: day
+          error_after: 
+            count: 1
+            period: day
+            
+     
+          
+          
+          
+          
