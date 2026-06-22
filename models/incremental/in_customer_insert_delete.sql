@@ -13,3 +13,4 @@ where created_at > (
     from {{ this }}
 )
 {% endif %}
+

@@ -6,7 +6,6 @@
     "data_type": "timestamp"
 }
 ) }}
-
 select *
 from {{ ref('stg_customers') }}
 

@@ -11,3 +11,4 @@ select * from {{ ref('stg_customers') }}
     -- this filter will only be applied on an incremental run
     where created_at > (select max(created_at) from {{ this }}) 
 {% endif %}
+

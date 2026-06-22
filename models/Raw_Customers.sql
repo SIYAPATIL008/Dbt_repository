@@ -12,3 +12,4 @@ select
     created_at
 from {{ ref('customers') }}
 where customer_id is not null
+

@@ -10,3 +10,4 @@ group by
     c.customer_name
 order by
     total_orders desc
+
