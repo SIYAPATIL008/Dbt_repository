@@ -3,10 +3,12 @@
         materialized='table'
     )
 }}
-select 
+select
     order_id,
     customer_id,
     order_amount,
-    order_status,
+    {{ uppercase('order_status') }} as order_status,
     order_created_at
-from {{ref('orders')}}
+from {{ ref('orders') }}
+
+

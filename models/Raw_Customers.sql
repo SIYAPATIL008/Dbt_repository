@@ -6,9 +6,9 @@
 }}
 select
     customer_id,
-    upper(customer_name) as customer_name,
+    {{ uppercase('customer_name') }} as customer_name,
     customer_email,
-    customer_status,
+    {{ uppercase('customer_status') }} as customer_status,
     created_at
 from {{ ref('customers') }}
 where customer_id is not null

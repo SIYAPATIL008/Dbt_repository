@@ -99,3 +99,4 @@ order_id,customer_id,order_amount,order_status,order_created_at
 98,34,3783.71,DELIVERED,2026-06-06 17:32:30
 99,63,3171.07,DELIVERED,2026-06-07 03:32:30
 100,10,3596.37,SHIPPED,2026-06-08 01:32:30
+101,11,345.65,InProgressed,2026-06-09 01:54:30

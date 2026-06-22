@@ -12,4 +12,3 @@ select *
 from {{ source('DBT_SIYAPATIL008','RAW_CUSTOMERS') }}
 
 {% endsnapshot %}
-

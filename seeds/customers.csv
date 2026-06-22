@@ -100,3 +100,4 @@ customer_id,customer_name,customer_email,customer_status,created_at
 99,Customer_99,customer99@example.com,ACTIVE,2026-01-10
 100,Customer_100,customer100@example.com,INACTIVE,2026-01-11
 103,Customer_103,customer103@example.com,ACTIVE,2026-06-19
+104,Customer_104,customer104@example.com,Active,2026-06-20

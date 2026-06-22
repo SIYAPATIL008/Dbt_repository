@@ -31,3 +31,5 @@ models:
       - name: order_created_at
         tests:
           - not_null
+
+      
