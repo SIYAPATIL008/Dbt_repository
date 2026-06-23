@@ -17,9 +17,10 @@ models:
     Dbt_repository:
       +materialized: table
 
-
-
-
-
-
-
+vars:
+  ptfe_models:
+    - stg_csc_ptfe_601_plc
+    - stg_aiken_ptfe_901_plc
+    - stg_bnj_ptfe_701_plc
+    - stg_ire_ptfe_701_plc
+    - stg_demo_ptfe_801_plc

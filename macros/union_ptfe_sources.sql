@@ -1,8 +1,11 @@
-{% macro union_ptfe_sources(relations) %}
+{% macro union_ptfe_sources() %}
 
-{{ dbt_utils.union_relations(
-    relations=relations
-) }}
+    {% set relations = [] %}
 
-{% endmacro %}  
+    {% for model in var('ptfe_models') %}
+        {% do relations.append(ref(model)) %}
+    {% endfor %}
 
+    {{ dbt_utils.union_relations(relations=relations) }}
+
+{% endmacro %}
