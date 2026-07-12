@@ -11,11 +11,10 @@ from {{ ref('bnj_ptfe_701_plc') }}
 
 {% if is_incremental() %}
 
-where machine_unique_id >
+where t_stamp_raw >
 (
-    select coalesce(max(machine_unique_id), 0)
+    select coalesce(max(t_stamp_raw), '1900-01-01'::timestamp)
     from {{ this }}
 )
 
 {% endif %}
-
