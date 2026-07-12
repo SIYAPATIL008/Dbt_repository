@@ -1,6 +1,21 @@
 {{
     config(
-        materialized='view'
+        materialized='incremental',
+        unique_key='machine_unique_id',
+        incremental_strategy='merge'
     )
 }}
-select * from {{ ref('demo_ptfe_801_plc') }}
+
+select *
+from {{ ref('demo_ptfe_801_plc') }}
+
+{% if is_incremental() %}
+
+where machine_unique_id >
+(
+    select coalesce(max(machine_unique_id), 0)
+    from {{ this }}
+)
+
+{% endif %}
+

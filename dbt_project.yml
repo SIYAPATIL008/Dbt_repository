@@ -15,7 +15,7 @@ target-path: "target"
 clean-targets:
 models:
     Dbt_repository:
-      +materialized: table
+      +materialized: incremental
 
 vars:
   ptfe_models:

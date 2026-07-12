@@ -6,3 +6,5 @@ select
         't_stamp_raw'
     ]) }} as machine_id_new
 from {{ ref('int_ptfe_unified') }}
+
+

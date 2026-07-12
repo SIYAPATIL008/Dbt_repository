@@ -1,1 +1,4 @@
-{{ union_ptfe_sources() }}
+select * from {{ union_ptfe_sources() }}
+
+
+
