@@ -1,8 +1,8 @@
 {{
     config(
         materialized='incremental',
-        unique_key='machine_unique_id',
-        incremental_strategy='merge'
+        incremental_strategy='merge',
+        unique_key=['machine_unique_id', 't_stamp_raw']
     )
 }}
 
@@ -10,11 +10,8 @@ select *
 from {{ ref('demo_ptfe_801_plc') }}
 
 {% if is_incremental() %}
-
-where t_stamp_raw >
-(
-    select coalesce(max(t_stamp_raw), '1900-01-01'::timestamp)
+where machine_unique_id > (
+    select max(machine_unique_id)
     from {{ this }}
 )
-
 {% endif %}

@@ -1,4 +1,2 @@
 {{ union_count() }}
 
-
-

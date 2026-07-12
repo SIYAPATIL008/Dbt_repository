@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key=['machine_unique_id', 't_stamp_raw']
+    )
+}}
 select
     u.*,
     case
@@ -11,13 +18,9 @@ select
     end as t_stamp_utc
 from {{ ref('int_ptfe_unified') }} u
 {% if is_incremental() %}
-
-where machine_unique_id >
-(
-    select coalesce(max(machine_unique_id), 0)
+where machine_unique_id > (
+    select max(machine_unique_id)
     from {{ this }}
 )
-
 {% endif %}
-
 

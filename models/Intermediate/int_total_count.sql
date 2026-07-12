@@ -1,3 +1,2 @@
 select count(*) as unified_count
-from {{ ref('int_ptfe_unified') }}
-
+from {{ ref('int_UTC_Validation') }}

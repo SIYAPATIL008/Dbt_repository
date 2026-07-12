@@ -1,21 +1,34 @@
 {{
     config(
         materialized='incremental',
-        unique_key='machine_unique_id',
-        incremental_strategy='merge'
+        incremental_strategy='merge',
+        unique_key=['machine_unique_id', 't_stamp_raw']
     )
 }}
 
 select *
 from {{ ref('csc_ptfe_601_plc') }}
-
 {% if is_incremental() %}
-
-where t_stamp_raw >
+where
 (
-    select coalesce(max(t_stamp_raw), '1900-01-01'::timestamp)
-    from {{ this }}
+    t_stamp_raw > (
+        select max(t_stamp_raw)
+        from {{ this }}
+    )
 )
-
+or
+(
+    t_stamp_raw = (
+        select max(t_stamp_raw)
+        from {{ this }}
+    )
+    and machine_unique_id > (
+        select max(machine_unique_id)
+        from {{ this }}
+        where t_stamp_raw = (
+            select max(t_stamp_raw)
+            from {{ this }}
+        )
+    )
+)
 {% endif %}
-
